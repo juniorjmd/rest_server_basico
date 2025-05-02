@@ -29,16 +29,16 @@ export const userPost = async (req, res = response) => {
 }
 
 export const userPut = async (req, res = response) => {
-    const { id } = req.params; // Destructuring del body
+    const { id   } = req.params; // Destructuring del body
     const {  password, google, email, _id , ...resto } = req.body; // Destructuring del body
-
+    const usrAutenticado = req.userAut; // Obtener el usuario autenticado
     if (password) { // Si la contraseña existe, encriptarla
         const salt = bcryptjs.genSaltSync(); 
         resto.password = bcryptjs.hashSync(password, salt); // Encriptar la contraseña  
     } 
     const usuario =   await User.findByIdAndUpdate(id, resto); 
    
-    res.json(  usuario  ); 
+    res.json(  usuario    ); 
 }
 
 export const userPath = (req, res = response) => {

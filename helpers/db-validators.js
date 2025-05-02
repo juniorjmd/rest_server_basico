@@ -8,6 +8,7 @@ export const isRoleValid = async (rol = '') => {
             throw new Error(`El rol ${rol} no esta registrado en la base de datos`); // Si el rol no existe, retornar un error 400
         }
     }
+    
 
 export const emailExists = async (email = '') => {
     // Verificar si el correo existe
